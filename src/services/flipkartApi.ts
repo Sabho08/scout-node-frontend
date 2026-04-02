@@ -1,7 +1,7 @@
-const LOCAL_SERVER_URL = 'http://localhost:5000/api/flipkart';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
 
-const fetchFromServer = async <T>(endpoint: string, params: Record<string, string>): Promise<T> => {
-  const url = new URL(`${LOCAL_SERVER_URL}/${endpoint}`);
+const fetchFromServer = async <T>(endpointPath: string, params: Record<string, string>): Promise<T> => {
+  const url = new URL(`${BASE_URL}/flipkart/${endpointPath}`);
   Object.keys(params).forEach(key => {
     if (params[key]) url.searchParams.append(key, params[key]);
   });
